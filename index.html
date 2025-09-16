@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pathway Talent Connect - Connecting South African Talent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { 
+            margin:0; 
+            padding:0; 
+            box-sizing:border-box; 
+            font-family:'Montserrat', sans-serif; 
+        }
+        
+        body { 
+            background:#f9f9f9; 
+            color:#333; 
+            scroll-behavior:smooth; 
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav { 
+            position:fixed; 
+            width:100%; 
+            top:0; 
+            background:rgba(255,255,255,0.95); 
+            box-shadow:0 2px 6px rgba(0,0,0,0.1); 
+            z-index:1000; 
+            padding: 15px 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .logo span {
+            color: #3498db;
+        }
+        
+        nav ul { 
+            display:flex; 
+            list-style:none; 
+            gap:30px; 
+        }
+        
+        nav a { 
+            text-decoration:none; 
+            color:#2c3e50; 
+            font-weight:600; 
+            transition:0.3s; 
+            font-size: 0.9rem;
+        }
+        
+        nav a:hover { 
+            color:#3498db; 
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2c3e50;
+        }
+
+        /* Hero */
+        header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color:#fff; 
+            text-align:center; 
+            padding:150px 20px 100px; 
+            position:relative; 
+            overflow:hidden;
+        }
+        
+        header::before {
+            content:""; 
+            position:absolute; 
+            top:0; 
+            left:0; 
+            width:100%; 
+            height:100%; 
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?fit=crop&w=1600&q=80') no-repeat center center/cover; 
+            opacity:0.2; 
+            z-index:0;
+        }
+        
+        header h1 { 
+            font-size:2.8rem; 
+            margin-bottom:20px; 
+            position:relative; 
+            z-index:1; 
+            animation:fadeInDown 1s ease; 
+        }
+        
+        header p { 
+            font-size:1.2rem; 
+            margin-bottom:30px; 
+            position:relative; 
+            z-index:1; 
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation:fadeInUp 1s ease; 
+        }
+        
+        .btn { 
+            padding:15px 30px; 
+            font-size:1.1rem; 
+            color:#fff; 
+            background:#25D366; 
+            border-radius:50px; 
+            text-decoration:none; 
+            transition:0.3s; 
+            position:relative; 
+            z-index:1; 
+            display: inline-block;
+            animation:fadeIn 1.5s ease; 
+            font-weight: 600;
+        }
+        
+        .btn:hover { 
+            background:#128C7E; 
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        section { 
+            padding:80px 20px; 
+            text-align:center; 
+            position:relative; 
+        }
+        
+        .section-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        section h2 { 
+            font-size:2.2rem; 
+            margin-bottom:20px; 
+            color:#2c3e50; 
+            animation:fadeInUp 1s ease; 
+        }
+        
+        section p { 
+            font-size:1.1rem; 
+            max-width:900px; 
+            margin:0 auto 30px; 
+            animation:fadeIn 1s ease; 
+        }
+
+        /* Features */
+        .features { 
+            display:flex; 
+            flex-wrap:wrap; 
+            justify-content:center; 
+            gap:20px; 
+            margin-top:40px; 
+        }
+        
+        .feature { 
+            background:#fff; 
+            padding:25px; 
+            border-radius:12px; 
+            width:250px; 
+            box-shadow:0 6px 20px rgba(0,0,0,0.15); 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            text-align: center;
+        }
+        
+        .feature:hover { 
+            transform: translateY(-5px); 
+            box-shadow:0 12px 25px rgba(0,0,0,0.2); 
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        /* Remote jobs */
+        #remote { 
+            background:#ecf0f1; 
+        }
+        
+        #remote .feature { 
+            width:280px; 
+        }
+
+        /* Counters */
+        #impact {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+        }
+        
+        #impact h2 {
+            color: white;
+        }
+        
+        .counters { 
+            display:flex; 
+            flex-wrap:wrap; 
+            justify-content:center; 
+            gap:40px; 
+            margin-top:50px; 
+        }
+        
+        .counter { 
+            background:rgba(255, 255, 255, 0.1); 
+            color:#fff; 
+            padding:40px 20px; 
+            border-radius:12px; 
+            width:180px; 
+            transition: transform 0.3s; 
+            backdrop-filter: blur(10px);
+        }
+        
+        .counter:hover { 
+            transform: scale(1.05); 
+        }
+        
+        .counter h3 { 
+            font-size:2.5rem; 
+            margin-bottom:10px; 
+        }
+        
+        .counter p {
+            color: #fff;
+            margin: 0;
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .testimonial {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            padding: 25px;
+            width: 100%;
+            max-width: 350px;
+            text-align: left;
+            transition: transform 0.3s;
+            position: relative;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+        }
+        
+        .testimonial-content {
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .testimonial-content::before {
+            content: """;
+            font-size: 50px;
+            color: #3498db;
+            opacity: 0.3;
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            line-height: 1;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #3498db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .author-details h4 {
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+        
+        .author-details p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        /* Join Section */
+        #join { 
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+        }
+        
+        #join h2, #join p {
+            color: white;
+        }
+        
+        #join a { 
+            background:#25D366; 
+            padding:20px 40px; 
+            border-radius:50px; 
+            display:inline-block; 
+            color:#fff; 
+            font-size:1.3rem; 
+            text-decoration:none; 
+            transition:0.3s; 
+            font-weight: 600;
+        }
+        
+        #join a:hover { 
+            background:#128C7E; 
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer { 
+            background:#2c3e50; 
+            color:#fff; 
+            text-align:center; 
+            padding:60px 20px; 
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: #3498db;
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #3498db;
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #3498db;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.5);
+            z-index: 1000;
+            transition: 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background: #128C7E;
+            transform: scale(1.1);
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Animations */
+        @keyframes fadeIn { 
+            from{opacity:0;} 
+            to{opacity:1;} 
+        }
+        
+        @keyframes fadeInUp { 
+            from{opacity:0; transform:translateY(20px);} 
+            to{opacity:1; transform:translateY(0);} 
+        }
+        
+        @keyframes fadeInDown { 
+            from{opacity:0; transform:translateY(-20px);} 
+            to{opacity:1; transform:translateY(0);} 
+        }
+
+        @media(max-width:768px){
+            .features, #remote .features, .counters { 
+                flex-direction:column; 
+                align-items:center; 
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .testimonials-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="logo">Pathway<span>Talent</span></div>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#remote">Remote Jobs</a></li>
+            <li><a href="#impact">Impact</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#join">Join</a></li>
+        </ul>
+    </div>
+</nav>
+
+<header>
+    <h1>Pathway Talent Connect</h1>
+    <p>Connecting South African talent to career opportunities locally and globally through our WhatsApp community</p>
+    <a href="https://wa.me/27763616444" class="btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Join via WhatsApp
+    </a>
+</header>
+
+<section id="about">
+    <div class="section-container">
+        <h2>Our Story</h2>
+        <p>Pathway Talent Connect was created to empower South Africans by bridging the gap between talent and opportunity. Every skilled individual deserves access to meaningful careers, and we make that possible through our dedicated community platform.</p>
+    </div>
+</section>
+
+<section id="features">
+    <div class="section-container">
+        <h2>Our Features</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-list"></i></div>
+                <h3>Local Job Listings</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-user-circle"></i></div>
+                <h3>Profile Showcase</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                <h3>Direct Recruiter Connections</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-graduation-cap"></i></div>
+                <h3>Career Development Resources</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-award"></i></div>
+                <h3>Skill Verification & Badges</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-users"></i></div>
+                <h3>Networking Opportunities</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3>Webinars & Workshops</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-seedling"></i></div>
+                <h3>Support for Emerging Talent</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                <h3>Daily Job Alerts</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-comments"></i></div>
+                <h3>Community Support Groups</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="remote">
+    <div class="section-container">
+        <h2>Remote Job Opportunities</h2>
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3>Remote Developer Roles</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                <h3>Remote Marketing Jobs</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-paint-brush"></i></div>
+                <h3>Remote Design & Creative Positions</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-house-user"></i></div>
+                <h3>Flexible Work from Home Options</h3>
+            </div>
+            <div class="feature">
+                <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                <h3>Global Opportunities for South Africans</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="impact">
+    <div class="section-container">
+        <h2>Our Impact</h2>
+        <div class="counters">
+            <div class="counter">
+                <h3 id="usersCount">0</h3>
+                <p>Users</p>
+            </div>
+            <div class="counter">
+                <h3 id="jobsCount">0</h3>
+                <p>Jobs Posted</p>
+            </div>
+            <div class="counter">
+                <h3 id="companiesCount">0</h3>
+                <p>Companies Connected</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials">
+    <div class="section-container">
+        <h2>What South Africans Say</h2>
+        <div class="testimonials-container">
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    Pathway Talent Connect helped me find my dream job in Cape Town. The WhatsApp group is incredibly active with new opportunities daily!
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">LM</div>
+                    <div class="author-details">
+                        <h4>Lerato Mbeki</h4>
+                        <p>Marketing Manager, Cape Town</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    As a developer in Johannesburg, I found my current remote position through this platform. The community support is amazing!
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">TN</div>
+                    <div class="author-details">
+                        <h4>Thabo Nkosi</h4>
+                        <p>Software Developer, Johannesburg</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    I was struggling to find opportunities in Durban until I joined Pathway. Now I'm connected with employers who value my skills.
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">NZ</div>
+                    <div class="author-details">
+                        <h4>Nomalanga Zulu</h4>
+                        <p>Graphic Designer, Durban</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    The daily job alerts on WhatsApp have been a game-changer for my job search. I started a new position just 2 weeks after joining!
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">SJ</div>
+                    <div class="author-details">
+                        <h4>Sipho Jacobs</h4>
+                        <p>Project Manager, Pretoria</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    As a recent graduate, I found the entry-level opportunities and career advice incredibly helpful. Landed my first job!
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">AM</div>
+                    <div class="author-details">
+                        <h4>Amina Mohammed</h4>
+                        <p>Finance Graduate, Port Elizabeth</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial">
+                <div class="testimonial-content">
+                    Pathway doesn't just connect you with jobs—it connects you with a community that supports your growth. Highly recommend!
+                </div>
+                <div class="testimonial-author">
+                    <div class="author-avatar">PM</div>
+                    <div class="author-details">
+                        <h4>Pieter Marais</h4>
+                        <p>Sales Executive, Bloemfontein</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="join">
+    <div class="section-container">
+        <h2>Join Pathway Talent Connect Today</h2>
+        <p>Click below to join our WhatsApp group and start connecting with top South African employers!</p>
+        <a href="https://wa.me/27763616444" target="_blank">
+            <i class="fab fa-whatsapp"></i> Join Our WhatsApp Community
+        </a>
+    </div>
+</section>
+
+<footer>
+    <div class="section-container">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Pathway Talent Connect</h3>
+                <p>Connecting South African talent with local and global opportunities through our dedicated community platform.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#remote">Remote Jobs</a></li>
+                    <li><a href="#impact">Our Impact</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#join">Join Community</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> pathwaytalentconnect@gmail.com</li>
+                    <li><i class="fas fa-phone"></i> 076 361 6444</li>
+                    <li><i class="fas fa-map-marker-alt"></i> South Africa</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Pathway Talent Connect. All Rights Reserved.
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/27763616444" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+    
+    menuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+    
+    // Close menu when clicking on a link
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+    
+    // Counters Animation
+    function animateCounter(id, target) {
+        let count = 0;
+        const speed = Math.ceil(target / 200);
+        const el = document.getElementById(id);
+        const interval = setInterval(() => {
+            count += speed;
+            if(count >= target) { 
+                count = target; 
+                clearInterval(interval); 
+            }
+            el.textContent = count.toLocaleString();
+        }, 20);
+    }
+    
+    // Animate counters when they come into view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter("usersCount", 15230);
+                animateCounter("jobsCount", 874);
+                animateCounter("companiesCount", 120);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    observer.observe(document.getElementById('impact'));
+</script>
+
+</body>
+</html>
